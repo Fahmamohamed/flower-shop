@@ -12,10 +12,9 @@ const products = [
     { id: 10, name: "Flower Pot", price: 27, img: "images/p10.png" }
 ];
 
-// 2. Soo dejinta Dambiisha (Cart)
+
 let cart = JSON.parse(localStorage.getItem('flowers_cart')) || [];
 
-// 3. Marka bogga la rabo in la furo (Initialization)
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
     
@@ -41,47 +40,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 4. Xaqiijinta Bogga Contact (Contact Validation)
-// Function-ka xaqiijinta Contact-ka
 function validateContact(event) {
-    event.preventDefault(); // Jooji in boggu reload noqdo
+    event.preventDefault();
 
     const nameInput = document.getElementById('name').value;
     const feedback = document.getElementById('feedback');
     
-    // Regex: Kaliya ogol xarfo (a-z) iyo meel banaan (space). Nambarada ma ogola.
     const namePattern = /^[a-zA-Z\s]+$/;
 
-    // 1. Hubi haddii magacu nambar ama calaamad leeyahay
+   
     if (!namePattern.test(nameInput)) {
         feedback.innerText = "Magacaaga saxda ah geli (Xarfo kaliya)!";
         feedback.style.color = "red";
         
-        // Ku dar gariir (shake) haddii aad CSS-keeda haysato
+        
         document.getElementById('name').classList.add('error-shake');
         setTimeout(() => document.getElementById('name').classList.remove('error-shake'), 400);
         return false;
     }
 
-    // 2. Hubi dhererka magaca
     if (nameInput.trim().length < 3) {
         feedback.innerText = "Magacaaga saxda ah geli (Ugu yaraan 3 xarfo)!";
         feedback.style.color = "red";
         return false;
     }
 
-    // 3. Haddii wax walba sax yihiin
+   
     feedback.innerText = "Waad ku mahadsantahay xiriirkaaga!";
     feedback.style.color = "green";
 
-    // Nadiifi foomka 2 ilbiriqsi kadib
+   
     setTimeout(() => {
         document.getElementById('contactForm').reset();
         feedback.innerText = "";
     }, 2000);
 
     
-    // Nadiifi foomka 2 ilbiriqsi kadib
+
     setTimeout(() => {
         document.getElementById('contact-name').value = "";
         document.getElementById('contact-email').value = "";
@@ -90,7 +85,6 @@ function validateContact(event) {
     }, 2000);
 }
 
-// 5. Soo saarista Alaabta (Shop Page)
 function displayProducts() {
     const grid = document.getElementById('product-grid');
     grid.innerHTML = products.map(p => `
@@ -104,7 +98,6 @@ function displayProducts() {
     `).join('');
 }
 
-// 6. Ku darista Dambiisha & Farriinta 3-Sec
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
     cart.push(product);
@@ -119,13 +112,13 @@ function addToCart(productId) {
     }
 }
 
-// 7. Cusboonaysiinta Tirada Cart-ka (Header)
+
 function updateCartCount() {
     const countElement = document.getElementById('cart-count');
     if (countElement) countElement.innerText = cart.length;
 }
 
-// 8. Maamulista Bogga Dambiisha (Cart Page)
+
 function renderCart() {
     const cartContainer = document.getElementById('cart-items');
     const totalElement = document.getElementById('cart-total');
@@ -154,7 +147,6 @@ function removeFromCart(index) {
     updateCartCount();
 }
 
-// 9. Farsamaynta Dalabka (Checkout Process)
 function processOrder(event) {
     event.preventDefault();
     
@@ -182,7 +174,7 @@ function processOrder(event) {
     }, 3000);
 }
 
-// 10. Farriinta Qaladka ee Cas (Error Banner)
+
 function showGlobalError(text) {
     let errorDiv = document.getElementById('global-error');
     if (!errorDiv) {
