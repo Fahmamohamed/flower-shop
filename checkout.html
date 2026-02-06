@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <title>Dhammaystir Dalabka | FloSun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="images/log2.png" alt="Logo"></div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="checkout.html">Checkout</a>
+            <a href="cart.html" class="cart-icon">🛒 <span id="cart-count">0</span></a>
+        </nav>
+    </header>
+
+    <div class="checkout-container">
+        <h2>Dhammaystir Dalabka</h2>
+        <form id="checkout-form" onsubmit="processOrder(event)">
+            <label>Magacaaga oo Buuxa</label>
+            <input type="text" id="full-name" placeholder="Geli magaca (Xarfo kaliya)" required 
+                   oninput="this.value = this.value.replace(/[0-9]/g, '')">
+            
+            <label>Email-kaaga</label>
+            <input type="email" id="email" placeholder="email@tusaale.com" required>
+            
+            <label>Dooro Degmadaada</label>
+            <select id="district" required style="width: 100%; padding: 15px; border-radius: 10px; border: 2px solid #eee; margin-bottom: 20px;">
+                <option value="" disabled selected>Dooro degmo...</option>
+                <option value="Hodan">Hodan</option>
+                <option value="Howlwadaag">Howlwadaag</option>
+                <option value="Warta Nabadda">Warta Nabadda</option>
+                <option value="Waaberi">Waaberi</option>
+                <option value="Xamar Weyne">Xamar Weyne</option>
+                <option value="Dharkenley">Dharkenley</option>
+                <option value="Kaxda">Kaxda</option>
+                <option value="Dayniile">Dayniile</option>
+                <option value="Yaaqshiid">Yaaqshiid</option>
+            </select>
+            
+            <div class="order-summary">
+                <h4>Wadarta Lacagta: <span class="total-amount">$<span id="checkout-total">0</span></span></h4>
+            </div>
+
+            <button type="submit" class="btn-add">Xaqiiji Iibsashada</button>
+            <div id="checkout-msg" class="status-msg" style="text-align: center; margin-top: 15px; font-weight: bold;"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
